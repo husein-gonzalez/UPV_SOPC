@@ -1,0 +1,5 @@
+mkdir SOPC
+mkdir SOPC/Proyectos SOPC/Varios
+mkdir SOPC/Proyectos/P1 SOPC/Proyectos/P2 SOPC/Proyectos/P3 SOPC/Proyectos/P4
+mkdir SOPC/Proyectos/P1/A1.1 SOPC/Proyectos/P1/A1.2
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+t=0
+x=$1
+
+while [ true ] 
+do
+	echo $t
+	sleep $x 
+	let t++
+done
