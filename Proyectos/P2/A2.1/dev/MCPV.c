@@ -9,13 +9,14 @@
 int main(int argc, char* argv[])
 {
 
-	float y,x=0;
-	int ch=0;
+	float x=0;
+	int y,ch=0;
 
-	 /*       
-        if (argc == 1)
-                x = 1;
-*/
+	        
+        if (argc != 1)
+        	fprintf(stderr,"Filtro sin argumentos");
+
+
 	ch=getchar();
 	//printf("%d",ch);
 	while (ch!= EOF) 
@@ -24,10 +25,18 @@ int main(int argc, char* argv[])
 		return 1;
 	//ch=getchar();
 	
-	ch=ch-'0';
-	x=ch/5;
-	//putchar(ch);
-	printf("%f \n",x);
+	y=ch-'0';
+	if (y<=5)
+{
+		x=y/5.0;
+		//putchar(ch);
+		printf("%f \n",x);
+	
+}
+
+	else
+		fprintf(stderr,"Entrada invalida: %d\n", y);
+
 	ch=getchar();
 }
 
@@ -35,3 +44,6 @@ int main(int argc, char* argv[])
 
 
 }
+
+
+
