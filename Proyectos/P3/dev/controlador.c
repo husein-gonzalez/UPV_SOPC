@@ -1,5 +1,5 @@
-// controlador2.c
-// Ejecuta los programas cuyos nombres se especifican como argumento y los mata si no han acabado
+// controlador.c
+// Ejecuta el programa cuyos nombre se especifica como argumento y lo mata si no han acabado
 // en el tiempo definido
 /////////////////////////////////////////////////////////////////
 
@@ -35,13 +35,13 @@ int main(int argc, char * argv[])
 	{
 		case -1: //no se ha creado el proceso
 			printf("error fork 1\n");
-			exit(1);
+			exit(2);
                		break;
             	case 0:	//hijo1:ejecuta programa
 		        if (execlp(argv[2], argv[2], NULL) == -1)
 			{
            	        fprintf(stderr, "El programa %s no se ha podido ejecutar\n", argv[1]);
-			exit(2);
+			exit(3);
 			}
                		 break;
 		default: //padre
@@ -51,7 +51,7 @@ int main(int argc, char * argv[])
 			{
 				case -1: //no se ha creado el proceso
 					printf("error fork 2\n");
-					exit(3);
+					exit(4);
 			       		break;
 			    	case 0:	//hijo2:controla el tiempo
 					
@@ -63,13 +63,22 @@ int main(int argc, char * argv[])
 					id_muerto=wait(&EstadoHijo);
 					//printf("id: %d\n",id_muerto);
 					if (id_muerto==id_sleep)
+					{
 						muerte=kill(id_programa,pid);
+						fprintf(stderr,"pid: %d , ejecución abortada \n" , id_programa);
+					}
 					else if (id_muerto==id_programa)
+					{
 						muerte=kill(id_sleep,pid);
+						fprintf(stderr,"pid: %d , ejecución completa \n" , id_programa);
+					}
 					else
+					{
 						printf("error wait\n");
+						exit(5);
+					}
 					//printf("exito, %d \n", muerte);
-					exit(4);
+					exit(0);
 			}
 	}
 
