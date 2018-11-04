@@ -40,7 +40,7 @@ int main(int argc, char * argv[])
             	case 0:	//hijo1:ejecuta programa
 		        if (execlp(argv[2], argv[2], NULL) == -1)
 			{
-           	        fprintf(stderr, "El programa %s no se ha podido ejecutar\n", argv[1]);
+           	        fprintf(stderr, "El programa %s no se ha podido ejecutar\n", argv[2]);
 			exit(3);
 			}
                		 break;
